@@ -29,13 +29,23 @@ const Navbar = ({ user, onLogout }) => {
           <option value="mr">मराठी</option>
         </select>
         {user ? (
-          <button onClick={onLogout} className="ml-2 text-indigo hover:text-saffron transition">
-            {t("logout")}
-          </button>
+          <div className="flex items-center gap-2">
+            <Link to="/dashboard" className="text-indigo hover:text-saffron transition">
+              Dashboard
+            </Link>
+            <button onClick={onLogout} className="text-indigo hover:text-saffron transition">
+              {t("logout")}
+            </button>
+          </div>
         ) : (
-          <Link to="/auth" className="ml-2 text-indigo hover:text-saffron transition">
-            {t("sign_in")}
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link to="/auth" className="text-indigo hover:text-saffron transition">
+              {t("sign_in")}
+            </Link>
+            <Link to="/admin" className="text-gray-500 hover:text-gray-700 transition text-sm">
+              Admin
+            </Link>
+          </div>
         )}
       </div>
     </nav>

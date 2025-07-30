@@ -1,9 +1,21 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  const handleCreateShop = () => {
+    // For now, redirect to auth page to sign up first
+    navigate("/auth");
+  };
+
+  const handleBrowseStores = () => {
+    // Navigate to shop page
+    navigate("/shop");
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-mint to-white">
@@ -19,10 +31,16 @@ const Home = () => {
           />
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-saffron text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 text-lg">
+          <button 
+            onClick={handleCreateShop}
+            className="bg-saffron text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 text-lg cursor-pointer"
+          >
             {t("create_shop")}
           </button>
-          <button className="bg-indigo text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 text-lg">
+          <button 
+            onClick={handleBrowseStores}
+            className="bg-indigo text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 text-lg cursor-pointer"
+          >
             {t("browse_stores")}
           </button>
         </div>
